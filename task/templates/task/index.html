@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+</head>
+<body>
+    <form action="{% url 'task:index' %}" method="post">
+        {% csrf_token %}
+        {% for field in fields %}
+            <label for="field_{{ field.id }}">{{ field.data_field.name_field }}: {{ field.id }}</label>
+            <input type="text" id="{{ field.id }}" name="field_{{ field.id }}" value="{{ field.data_field.value_field }}"><br>
+        {% endfor %}
+        <input type="submit" value="Add field">
+    </form>
+</body>
+</html>
